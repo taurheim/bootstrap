@@ -1,0 +1,26 @@
+https://medium.com/@Andreas_cmj/how-to-setup-a-nice-looking-terminal-with-wsl-in-windows-10-creators-update-2b468ed7c326
+https://raw.githubusercontent.com/jldeen/dotfiles/wsl/configure.sh
+
+
+wsl-terminal
+powerline9k
+get powerline font: deja vu sans mono
+https://github.com/seebi/dircolors-solarized
+git clone https://github.com/erikw/tmux-powerline.git
+
+files:
+.zshrc
+.bashrc
+.tmux.conf
+powerline config?
+
+
+From fresh install:
+sudo apt-get update
+sudo apt-get upgrade
+sudo apt-get install zsh
+sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
+git clone https://github.com/tarjoilija/zgen.git "${HOME}/.zgen"
+mkdir -p ~/.vim/autoload ~/.vim/bundle && \
+curl -LSso ~/.vim/autoload/pathogen.vim https://tpo.pe/pathogen.vim
+git clone https://github.com/seebi/dircolors-solarized
