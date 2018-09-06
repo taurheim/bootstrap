@@ -32,6 +32,7 @@ cd vim-colors-solarized/colors && \
 mv solarized.vim ~/.vim/colors/solarized.vim
 
 Configure terminal:
-1. open-wsl
-2. Change font to Deja Vu Sans Mono size 10
-3. Change theme to solarized dark
+1. Copy config/wsl-terminal.conf to C:\Program Files\wsl-terminal\etc\wsl-terminal.conf
+2. open-wsl
+3. Change font to Deja Vu Sans Mono size 10
+4. Change theme to solarized dark
