@@ -21,6 +21,7 @@ cp -rf -v ~/bootstrap/config/.* ~/
 
 sudo apt -y install zsh
 sudo apt -y install tmux
+sudo apt -y install autojump
 sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
 git clone https://github.com/tarjoilija/zgen.git "${HOME}/.zgen" && \
 mkdir -p ~/.vim/autoload ~/.vim/bundle && \

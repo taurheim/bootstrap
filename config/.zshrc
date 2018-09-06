@@ -12,6 +12,7 @@ ZSH_DISABLE_COMPFIX=1
 # prompt pure
 
 setopt prompt_subst
+unsetopt BG_NICE
 
 POWERLEVEL9K_LEFT_PROMPT_ELEMENTS=(context dir)
 POWERLEVEL9K_RIGHT_PROMPT_ELEMENTS=(vcs)
