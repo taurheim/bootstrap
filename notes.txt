@@ -2,18 +2,11 @@ https://medium.com/@Andreas_cmj/how-to-setup-a-nice-looking-terminal-with-wsl-in
 https://raw.githubusercontent.com/jldeen/dotfiles/wsl/configure.sh
 
 
-wsl-terminal
-powerline9k
-get powerline font: deja vu sans mono
-https://github.com/seebi/dircolors-solarized
-git clone https://github.com/erikw/tmux-powerline.git
-
-files:
-.zshrc
-.bashrc
-.tmux.conf
-powerline config?
-
+1. Open powershell admin
+Enable-WindowsOptionalFeature -Online -FeatureName Microsoft-Windows-Subsystem-Linux
+(Restart from prompt)
+2. Install ubuntu: https://www.microsoft.com/store/p/ubuntu/9nblggh4msv6
+3. Get the powerline font: https://github.com/powerline/fonts/tree/master/DejaVuSansMono
 
 From fresh install:
 sudo apt-get update
@@ -23,4 +16,9 @@ sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/mas
 git clone https://github.com/tarjoilija/zgen.git "${HOME}/.zgen"
 mkdir -p ~/.vim/autoload ~/.vim/bundle && \
 curl -LSso ~/.vim/autoload/pathogen.vim https://tpo.pe/pathogen.vim
+cd ~
 git clone https://github.com/seebi/dircolors-solarized
+git clone https://github.com/altercation/vim-colors-solarized.git
+mkdir ~/.vim/colors
+cd vim-colors-solarized/colors
+mv solarized.vim ~/.vim/colors/solarized.vim
