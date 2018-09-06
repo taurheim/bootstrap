@@ -5,6 +5,7 @@ export ZSH=/root/.oh-my-zsh
 eval `dircolors ~/dircolors-solarized/dircolors.256dark`
 
 # ZSH_THEME="powerlevel9k/powerlevel9k"
+ZSH_DISABLE_COMPFIX=1
 
 # pure
 # autoload -U promptinit; promptinit
@@ -44,7 +45,10 @@ export DEVKITPPC=$DEVKITPRO/devkitPPC
 # Aliases
 alias open="explorer.exe"
 alias rz="source ~/.zshrc"
-alias ez="vim  ~/.zshrc"
+alias ez="vim ~/.zshrc"
+alias ev="vim ~/.vimrc"
+alias et="vim ~/.tmux.conf"
+alias eb="vim ~/.bashrc"
 alias vscode="code . > /dev/null 2>&1 &"
 
 # Load tmux
