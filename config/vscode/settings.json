@@ -1,0 +1,11 @@
+{
+    "workbench.colorTheme": "Solarized Dark",
+    "terminal.integrated.shell.windows": "C:\\WINDOWS\\sysnative\\bash.exe",
+    "terminal.integrated.shellArgs.windows": ["-c", "tmux"],
+    "vim.insertModeKeyBindings": [
+        {
+            "before": ["j","k"],
+            "after": ["<Esc>"]
+        },
+    ],
+}
