@@ -5,7 +5,7 @@ export ZSH=/root/.oh-my-zsh
 eval `dircolors ~/dircolors-solarized/dircolors.256dark`
 
 # ZSH_THEME="powerlevel9k/powerlevel9k"
-ZSH_DISABLE_COMPFIX=1
+ZSH_DISABLE_COMPFIX="true"
 
 # pure
 # autoload -U promptinit; promptinit
