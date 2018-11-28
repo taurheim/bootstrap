@@ -3,6 +3,8 @@ if (!(Get-Command "choco.exe" -ErrorAction SilentlyContinue)) {
     echo "Installing Chocolatey..."
     iex ((New-Object System.Net.WebClient).DownloadString('https://chocolatey.org/install.ps1'))
     echo "Chocolatey successfully installed"
+    $env:ChocolateyInstall = Convert-Path "$((Get-Command choco).path)\..\.."
+    Import-Module "$env:ChocolateyInstall\helpers\chocolateyProfile.psm1"
     refreshenv
 }
 
