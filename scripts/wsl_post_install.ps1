@@ -46,4 +46,3 @@ if (!(test-path "$HOME\wsl-terminal")) {
 $bootstrapPath = "$PSScriptRoot"
 $linuxBootstrapPath = ($bootstrapPath -replace "\\", "/")
 bash -c "./linux_bootstrap.sh $linuxBootstrapPath"
-bash -c "./linux_bootstrap.sh"
