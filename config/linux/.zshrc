@@ -51,6 +51,11 @@ alias ev="vim ~/.vimrc"
 alias et="vim ~/.tmux.conf"
 alias eb="vim ~/.bashrc"
 alias vscode="code . > /dev/null 2>&1 &"
+alias gs="git status"
+alias gp="git pull"
+alias ga="git add -A"
+alias gc="git commit"
+alias go="git checkout"
 
 # Load tmux
 [[ -z "$TMUX" && -n "$USE_TMUX" ]] && {

@@ -25,4 +25,20 @@ if (!$all) {
 
     # Install Windows Subsystem for Linux
     & ((Split-Path $MyInvocation.InvocationName) + "\wsl.ps1")
+
+    # Make a bin folder for user scripts
+    # Note: this assumes bootstrap's location
+    New-Item "$HOME\bin" -ItemType Directory
+    Copy-Item -Force -Recurse -Verbose -Path "${env:USERPROFILE}\bootstrap\scripts\windows" -Destination "$HOME\bin"
+
+    # Modify the PATH
+    echo "Path backup:"
+    echo $([Environment]::GetEnvironmentVariable("Path", "User"))
+    echo $([Environment]::GetEnvironmentVariable("Path", "Machine"))
+
+    # Add the user scripts to $HOME/bin
+    [Environment]::SetEnvironmentVariable("Path", [Environment]::GetEnvironmentVariable("Path", "User") + "$HOME\bin", [EnvironmentVariableTarget]::User)
+
+    # Add open-wsl to path
+    [Environment]::SetEnvironmentVariable("Path", [Environment]::GetEnvironmentVariable("Path", "Machine") + "$HOME\wsl-terminal", [EnvironmentVariableTarget]::Machine)
 }
