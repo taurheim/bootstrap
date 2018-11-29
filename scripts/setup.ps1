@@ -29,7 +29,7 @@ if (!$all) {
     # Make a bin folder for user scripts
     # Note: this assumes bootstrap's location
     New-Item "$HOME\bin" -ItemType Directory
-    Copy-Item -Force -Recurse -Verbose -Path "${env:USERPROFILE}\bootstrap\scripts\windows" -Destination "$HOME\bin"
+    Copy-Item -Force -Recurse -Verbose -Path "${env:USERPROFILE}\bootstrap\tools\windows\*" -Destination "$HOME\bin"
 
     # Modify the PATH
     echo "Path backup:"
