@@ -14,17 +14,14 @@ if (!$all) {
 
     refreshenv
 
-    # Copy vscode settings over
+    # vscode
     if (!(test-path "$HOME\AppData\Roaming\Code\User")) {
         New-Item "$HOME\AppData\Roaming\Code\User" -ItemType Directory
-        Copy-Item -Recurse -Verbose -Force -Path "..\config\vscode\*" -Destination "$HOME\AppData\Roaming\Code\User\"
     }
-
+    # Copy vscode settings over
+    Copy-Item -Recurse -Verbose -Force -Path "..\config\vscode\*" -Destination "$HOME\AppData\Roaming\Code\User\"
     # Install vscode packages
     code --install-extension vscodevim.vim
-
-    # Install Windows Subsystem for Linux
-    & ((Split-Path $MyInvocation.InvocationName) + "\wsl.ps1")
 
     # Make a bin folder for user scripts
     # Note: this assumes bootstrap's location
@@ -39,6 +36,6 @@ if (!$all) {
     # Add the user scripts to $HOME/bin
     [Environment]::SetEnvironmentVariable("Path", [Environment]::GetEnvironmentVariable("Path", "User") + "$HOME\bin", [EnvironmentVariableTarget]::User)
 
-    # Add open-wsl to path
-    [Environment]::SetEnvironmentVariable("Path", [Environment]::GetEnvironmentVariable("Path", "Machine") + "$HOME\wsl-terminal", [EnvironmentVariableTarget]::Machine)
+    # Install Windows Subsystem for Linux
+    & ((Split-Path $MyInvocation.InvocationName) + "\wsl.ps1") > "$(env:USERPROFILE)\bootstrap\out\wsl_$(Get-Date -Format FileDateTime).txt"
 }

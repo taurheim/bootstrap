@@ -37,9 +37,7 @@ if (!(test-path "$HOME\wsl-terminal")) {
     .\install_font.ps1 "$HOME\wsl-terminal\DejaVuSansMono.ttf"
 
     echo "Adding open-wsl to PATH"
-    $oldpath = (Get-ItemProperty -Path "Registry::HKEY_LOCAL_MACHINE\System\CurrentControlSet\Control\Session Manager\Environment" -Name PATH).path
-    $newpath = "$oldpath;$HOME\wsl-terminal"
-    Set-ItemProperty -Path "Registry::HKEY_LOCAL_MACHINE\System\CurrentControlSet\Control\Session Manager\Environment" -Name PATH -Value $newPath
+    [Environment]::SetEnvironmentVariable("Path", [Environment]::GetEnvironmentVariable("Path", "Machine") + "$HOME\wsl-terminal", [EnvironmentVariableTarget]::Machine)
 }
 
 # Install & Configure linux stuff
