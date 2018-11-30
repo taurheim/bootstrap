@@ -45,5 +45,6 @@ if (!(test-path "$HOME\wsl-terminal")) {
 # Install & Configure linux stuff
 $bootstrapPath = Split-Path $PSScriptRoot -Parent
 $linuxBootstrapPath = wsl wslpath -a ($bootstrapPath -replace "\\", "/")
-bash -c "./linux_bootstrap.sh $linuxBootstrapPath"
+$scriptPath = wsl wslpath -a ("$HOME\bootstrap\scripts\linux_bootstrap.sh" -replace "\\", "/")
+bash -c "$scriptPath $linuxBootstrapPath"
 Stop-Transcript
