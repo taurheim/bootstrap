@@ -18,15 +18,13 @@ else
 fi
 
 echo "Bootstrap root: $BootstrapRepoRoot"
-# sudo apt -y update
-# sudo apt -y upgrade
-rm ~/.bashrc
-cp -rfRv "$BootstrapRepoRoot/config/." ~/
+sudo apt -y update
+sudo apt -y upgrade
 
 sudo apt -y install zsh tmux autojump
 
 # zsh & config
-sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
+sh -c "$(curl -fsSL https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh | sed '/\s*env\s\s*zsh\s*/d')"
 git clone https://github.com/tarjoilija/zgen.git "${HOME}/.zgen"
 mkdir -p ~/.vim/autoload ~/.vim/bundle
 
@@ -36,6 +34,10 @@ git clone https://github.com/altercation/vim-colors-solarized.git ~/vim-colors-s
 mkdir -p ~/.vim/colors
 mv ~/vim-colors-solarized/colors/solarized.vim ~/.vim/colors/solarized.vim
 rm -rf ~/vim-colors-solarized
+
+# config
+rm -f ~/.bashrc
+cp -rfRv "$BootstrapRepoRoot/config/linux/." ~/
 
 # theme
 git clone https://github.com/seebi/dircolors-solarized ~/dircolors-solarized

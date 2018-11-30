@@ -4,4 +4,5 @@
 # Declare files that will always have CRLF line endings on checkout.
 *.ps1 text eol=crlf
 *.sh text eol=lf
+config/linux/* text eol=lf
 minttyrc text eol=lf

@@ -2,6 +2,8 @@ param (
     [switch]$all = $false
 )
 
+Start-Transcript -Path "$HOME\bootstrap\out\setup_$(Get-Date -Format FileDateTime).txt"
+
 if (!$all) {
     echo "The setup script doesn't currently support options. Please call with -all for a full setup"
 } else {
@@ -36,8 +38,10 @@ if (!$all) {
     echo $([Environment]::GetEnvironmentVariable("Path", "Machine"))
 
     # Add the user scripts to $HOME/bin
-    [Environment]::SetEnvironmentVariable("Path", [Environment]::GetEnvironmentVariable("Path", "User") + "$HOME\bin", [EnvironmentVariableTarget]::User)
+    [Environment]::SetEnvironmentVariable("Path", [Environment]::GetEnvironmentVariable("Path", "User") + ";$HOME\bin", [EnvironmentVariableTarget]::User)
 
     # Install Windows Subsystem for Linux
     & ((Split-Path $MyInvocation.InvocationName) + "\wsl.ps1") | Tee-Object -file "$HOME\bootstrap\out\wsl_$(Get-Date -Format FileDateTime).txt"
 }
+
+Stop-Transcript

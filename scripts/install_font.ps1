@@ -11,4 +11,5 @@ $code=@'
     }
 '@
 Add-Type $code
+echo "Installing font $($args[0])"
 [fontutil]::AddFontResource("$($args[0])")

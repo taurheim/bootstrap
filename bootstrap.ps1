@@ -24,5 +24,5 @@ if (!(test-path "$HOME\bootstrap\")) {
 
 # Start the rest of the scripts
 echo "`n`nSuccessfully got the bootstrap script! Use the following command to install what you need!`n"
-echo "$env:USERPROFILE\bootstrap\scripts\setup.ps1 -all | Tee-Object -file $env:USERPROFILE\bootstrap\out\setup_$(Get-Date -Format FileDateTime).txt"
+echo "$env:USERPROFILE\bootstrap\scripts\setup.ps1 -all"
 echo "`n"
