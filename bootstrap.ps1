@@ -15,14 +15,14 @@ if (!(Get-Command "git.exe" -ErrorAction SilentlyContinue)) {
 }
 
 # Grab the rest of the bootstrapper
-if (!(test-path "$env:USERPROFILE\bootstrap\")) {
-    pushd $env:USERPROFILE
-    git clone https://github.com/taurheim/bootstrap.git
-    popd
+if (!(test-path "$HOME\bootstrap\")) {
+    git clone https://github.com/taurheim/bootstrap.git "$HOME\bootstrap"
     refreshenv
+} else {
+    git -C "$HOME\bootstrap" pull
 }
 
 # Start the rest of the scripts
 echo "`n`nSuccessfully got the bootstrap script! Use the following command to install what you need!`n"
-echo "$env:USERPROFILE\bootstrap\scripts\setup.ps1 -all > $env:USERPROFILE\bootstrap\out\setup_$(Get-Date -Format FileDateTime).txt"
+echo "$env:USERPROFILE\bootstrap\scripts\setup.ps1 -all | Tee-Object -file $env:USERPROFILE\bootstrap\out\setup_$(Get-Date -Format FileDateTime).txt"
 echo "`n"

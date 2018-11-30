@@ -19,14 +19,16 @@ if (!$all) {
         New-Item "$HOME\AppData\Roaming\Code\User" -ItemType Directory
     }
     # Copy vscode settings over
-    Copy-Item -Recurse -Verbose -Force -Path "..\config\vscode\*" -Destination "$HOME\AppData\Roaming\Code\User\"
+    Copy-Item -Recurse -Verbose -Force -Path "$HOME\bootstrap\config\vscode\*" -Destination "$HOME\AppData\Roaming\Code\User\"
     # Install vscode packages
     code --install-extension vscodevim.vim
 
     # Make a bin folder for user scripts
     # Note: this assumes bootstrap's location
-    New-Item "$HOME\bin" -ItemType Directory
-    Copy-Item -Force -Recurse -Verbose -Path "${env:USERPROFILE}\bootstrap\tools\windows\*" -Destination "$HOME\bin"
+    if (!(test-path "$HOME\bin")) {
+        New-Item "$HOME\bin" -ItemType Directory
+    }
+    Copy-Item -Force -Recurse -Verbose -Path "$HOME\bootstrap\tools\windows\*" -Destination "$HOME\bin"
 
     # Modify the PATH
     echo "Path backup:"
@@ -37,5 +39,5 @@ if (!$all) {
     [Environment]::SetEnvironmentVariable("Path", [Environment]::GetEnvironmentVariable("Path", "User") + "$HOME\bin", [EnvironmentVariableTarget]::User)
 
     # Install Windows Subsystem for Linux
-    & ((Split-Path $MyInvocation.InvocationName) + "\wsl.ps1") > "$(env:USERPROFILE)\bootstrap\out\wsl_$(Get-Date -Format FileDateTime).txt"
+    & ((Split-Path $MyInvocation.InvocationName) + "\wsl.ps1") | Tee-Object -file "$HOME\bootstrap\out\wsl_$(Get-Date -Format FileDateTime).txt"
 }
