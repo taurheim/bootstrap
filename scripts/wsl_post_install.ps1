@@ -11,6 +11,8 @@ Write-Host "Complete."
 
 Start-Sleep -s 5
 
+Unregister-ScheduledTask -TaskName ResumeWSLInstall -Confirm:$false
+
 # Install ubuntu
 if (!($($(wslconfig /list /all) -replace "\0","") -match "Ubuntu")) {
     echo "Installing Ubuntu..."
